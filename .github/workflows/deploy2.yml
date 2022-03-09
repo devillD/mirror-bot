@@ -1,0 +1,20 @@
+name: Heroku2
+
+on: workflow_dispatch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: akhileshns/heroku-deploy@v3.12.12
+        with:
+          heroku_api_key: ${{secrets.HERO_API_KEY}}
+          heroku_app_name: ${{secrets.HERO_APP_NAME}}
+          heroku_email: ${{secrets.HERO_EMAIL}}
+          usedocker: true
+          docker_heroku_process_type: web
+          stack: "container"
+          region: "eu"
+        env:
+          HD_CONFIG_FILE_URL: ${{secrets.H_CONFIG_FILE_URL}}
