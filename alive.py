@@ -15,7 +15,7 @@ PORT = environ.get('PORT', None)
 if PORT is not None and BASE_URL is not None:
     while True:
         try:
-            rget(f'{PING_URL}{BASE_URL}').status_code
+            rget(f"{PING_URL}{BASE_URL}").status_code
             sleep(600)
         except Exception as e:
             logerror(f"alive.py: {e}")
