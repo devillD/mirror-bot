@@ -8,13 +8,14 @@ try:
     if len(BASE_URL) == 0:
         raise TypeError
     BASE_URL = BASE_URL.rstrip("/")
+    PING_URL = "https://ping.up.railway.app/?link="
 except TypeError:
     BASE_URL = None
 PORT = environ.get('PORT', None)
 if PORT is not None and BASE_URL is not None:
     while True:
         try:
-            rget('https://ping.up.railway.app/?link='BASE_URL).status_code
+            rget(f'{PING_URL}{BASE_URL}').status_code
             sleep(600)
         except Exception as e:
             logerror(f"alive.py: {e}")
