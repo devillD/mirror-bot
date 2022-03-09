@@ -27,11 +27,10 @@ if SEARCH_PLUGINS is not None:
     qbclient.auth_log_out()
 
 SITES = {
-    "1337x": "1337x",
+    "1337x": "1337X",
     "yts": "YTS",
     "eztv": "EzTv",
-    "tgx": "TorrentGalaxy",
-    "torlock": "Torlock",
+    "galaxy": "TorrentGalaxy",
     "piratebay": "PirateBay",
     "nyaasi": "NyaaSi",
     "rarbg": "Rarbg",
@@ -105,7 +104,7 @@ def torserbut(update, context):
 def _search(key, site, message, tool):
     LOGGER.info(f"Searching: {key} from {site}")
     if tool == 'api':
-        api = f"{SEARCH_API_LINK}/api/{site}/{key}"
+        api = f"{SEARCH_API_LINK}/{site}/{key}"
         try:
             resp = rget(api)
             search_results = resp.json()
